@@ -4,12 +4,12 @@ from typing import Final
 #len 1,2,3,4,5
 nome="Pedro"
 #texto="stsrsrsrlrkslrkslksrçl9"
-# ele conta a quantidade de elementos dentro do meu vetor
+# Len() conta a quantidade de elementos dentro do meu vetor
 #print(len(texto))
 #print(nome[1:4])
 # intervalo  1   - 8
-#n=range(4,50)
-#print(n)
+n=range(1,9)
+print(n)
 
 # for
 #( 1,2,3,4,5,6,7,8,9)
@@ -25,8 +25,10 @@ nome="Pedro"
 #( 1,2,3,4,5,6,7,8,9)
 n="srrtsrstyy"
 len(n) # o tamanho em elementos
-for i in range(len(n)):
-    print(n[i])
+
+# O range (10) gera um intervalo
+for i in (1,2,3,4,5,6,7,8,9):
+    print(i)
 
 
 

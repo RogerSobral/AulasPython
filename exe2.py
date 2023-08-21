@@ -43,3 +43,4 @@ texto= "Vamos pensar no dia que você para de ir em casa"
 separandoTexto=texto.split("o")
 print(separandoTexto)
 print(len(separandoTexto))
+

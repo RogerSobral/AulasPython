@@ -35,3 +35,12 @@ for i in range(10):
     print(i)
 
 
+print("#"*30)
+#Constante
+VALOR:Final =23
+
+VALOR=45
+
+nome:str="Rogerio"
+nome=12
+print(type(nome))

@@ -1,7 +1,9 @@
 from typing import Final
-#String é vista como um Vetor
+
+#String é vista como um Vetor de elementos
+#Existe uma diferença entre o valor do indice e o tamanho do objeto
 # indice  0 1 2 3 4
-#len 1,2,3,4,5
+# len     1,2,3,4,5
 nome="Pedro"
 #texto="stsrsrsrlrkslrkslksrçl9"
 # Len() conta a quantidade de elementos dentro do meu vetor

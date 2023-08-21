@@ -21,7 +21,7 @@ print(texto.strip())
 #if resposta=="S":
 #    print("entrou")
 
-
+#Ele separa os elementos tendo como o nosso separados o simbolo que você passar como parametro
 lista=texto.split("/")
 print(2023-int(lista[2]))
 

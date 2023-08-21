@@ -22,16 +22,16 @@ print(n)
 #for i in range(1,11):
 #    for j in range(1, 11):
 #        print(f"{i}x{j}={i*j}")
-
 #    print("#"*30)
 #( 1,2,3,4,5,6,7,8,9)
 n="srrtsrstyy"
 len(n) # o tamanho em elementos
 
 # O range (10) gera um intervalo
-for i in (1,2,3,4,5,6,7,8,9):
+for i in (0,1,2,3,4,5,6,7,8,9):
     print(i)
-
-
+#Ambos geram os mesmos resultados
+for i in range(10):
+    print(i)
 
 

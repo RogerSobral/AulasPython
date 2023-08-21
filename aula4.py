@@ -27,10 +27,10 @@ print(n)
 n="srrtsrstyy"
 len(n) # o tamanho em elementos
 
-# O range (10) gera um intervalo
+#gerando um range (10) usando uma tupla gera um intervalo
 for i in (0,1,2,3,4,5,6,7,8,9):
     print(i)
-#Ambos geram os mesmos resultados
+#Usando o range geram os mesmos resultados
 for i in range(10):
     print(i)
 

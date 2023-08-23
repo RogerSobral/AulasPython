@@ -49,10 +49,11 @@ print(f"Aluno {nome2} tirou a média: {media_a2}")
 #print(sum(numeros)/len(numeros))
 
 # Segunda versão
-#estou criando uma lista so para nostas e essa lista esta dentro da principal
+#estou criando uma lista so para mostras uma lista dentro da principal
 #index     0      1       2
 aluno1=["carlos",45,[7.7,6.5,8]]
 #index lista interna 0    1  2
+
 print("Média: ",sum(aluno1[2])/len(aluno1[2]))
 
 # digamos que eu quero pegar um valor da nota sendo ela a primeira
@@ -67,3 +68,4 @@ print(aluno1[2][1])
 # 3) imprimir a soma das notas sum()
 # 4) imprimir a contagem do numero das notas len()
 # 5) imprimir a a media das notas do cliente junto com o seu nome
+

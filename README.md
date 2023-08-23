@@ -1,3 +1,3 @@
 # AulasPython
 
-Estudo de Python ministrados em sala para a Turma dO técnico de informatica.
+Estudo de Python ministrados em sala para a Turma do técnico de informatica.

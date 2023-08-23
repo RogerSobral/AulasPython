@@ -58,8 +58,9 @@ print("Média: ",sum(aluno1[2])/len(aluno1[2]))
 # digamos que eu quero pegar um valor da nota sendo ela a primeira
 print(aluno1[2][1])
 
+#Exercicio
 # Criar uma lista que vai conter o nome do cliente
-# criar uma lista interna que vai ter o contato ( tel, email)
+# criar uma lista interna que vai ter o contato (tel,email)
 # criar uma lista  interna que tenha 3 notas do cliente
 # 1) imprima o nome do cliente
 # 2) imprima o somente o telefone  do cliente

@@ -51,21 +51,29 @@ print(f"Aluno {nome2} tirou a média: {media_a2}")
 # Segunda versão
 #estou criando uma lista so para mostras uma lista dentro da principal
 #index     0      1       2
-aluno1=["carlos",45,[7.7,6.5,8]]
+#aluno1=["carlos",45,[7.7,6.5,8]]
 #index lista interna 0    1  2
 
-print("Média: ",sum(aluno1[2])/len(aluno1[2]))
+#print("Média: ",sum(aluno1[2])/len(aluno1[2]))
 
 # digamos que eu quero pegar um valor da nota sendo ela a primeira
-print(aluno1[2][1])
+#print(aluno1[2][1])
 
 #Exercicio
-# Criar uma lista que vai conter o nome do cliente
-# criar uma lista interna que vai ter o contato (tel,email)
-# criar uma lista  interna que tenha 3 notas do cliente
-# 1) imprima o nome do cliente
-# 2) imprima o somente o telefone  do cliente
-# 3) imprimir a soma das notas sum()
-# 4) imprimir a contagem do numero das notas len()
+# Criar uma lista que vai conter o nome do cliente ->ok
+# criar uma lista interna que vai ter o contato (tel,email) -> ok
+# criar uma lista  interna que tenha 3 notas do cliente -> ok
+# 1) imprima o nome do cliente -> ok
+# 2) imprima o somente o telefone  do cliente -> ok
+# 3) imprimir a soma das notas sum() -> ok
+# 4) imprimir a contagem do numero das notas len() -> ok
 # 5) imprimir a a media das notas do cliente junto com o seu nome
 
+
+cliente=["Carlos",["(11)94545-4545", "meuemail@gmail.com"],[4.5,7,9]]
+
+print(cliente[0]) # pegando o nome
+print(cliente[1][0]) # pegando o telefone
+print(sum(cliente[2])) # pegando e somar
+print(len(cliente[2])) # contar os elementos
+print(f"Nome:{cliente[0]} Média: {sum(cliente[2])/len(cliente[2])}")

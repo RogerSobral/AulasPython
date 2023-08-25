@@ -110,18 +110,16 @@ if nome in ["pedro", "maria", "santos", "josé"] and senha =="1234":
             cpf: str = input("Digite seu cpf: ")
             ano_nasc:int = int(input("Digite o seu Ano de Nascimento: "))
 
-            cliente=[nome,rg,cpf,ano_nasc]
-            clientes.append(cliente)
+            cliente=[nome,rg,cpf,ano_nasc] # criar um cliente novo
+            clientes.append(cliente) # add o cliente novo na lista
 
 
         elif menu==2:
-            print("entrando")
+
         #Calcular a idade
 
             #para pegar cada lista
-            print("verifciar o valor do tamanho: ",len(clientes))
             for linha in range(len(clientes)):
-
                 idade= dt.date.today().year-clientes[linha][3]
                 print(f"Cliente: {clientes[linha][0]} idade: {idade}")
 
@@ -130,7 +128,7 @@ if nome in ["pedro", "maria", "santos", "josé"] and senha =="1234":
         if menu==4:
             break
 
-        print(menu)
+
 
 else:
     print("Nome ou senha não existe no sistema")

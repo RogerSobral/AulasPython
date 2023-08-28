@@ -80,6 +80,7 @@ print(listas[1][0])
 # Cadastrando varios usuarios
 # só vamos sair do cadastro quando estivermos prontos
 
+
 print("#"*30)
 
 print("Seja Bem vindo ao Sistema!")

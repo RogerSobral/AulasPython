@@ -108,6 +108,7 @@ aluno["nome"]="Pedro"
 
 
 print("#" * 30)
+
 alunos=[
     {"nome":"Carlos","idade":34,"RG":"567.78.23-45"},
     {"nome":"Pedro","idade":18,"RG":"777.78.23-45"},

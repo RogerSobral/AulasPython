@@ -25,3 +25,9 @@ print(texto.strip())
 lista=texto.split("/")
 print(2023-int(lista[2]))
 
+
+print("#"*30)
+lista=list()
+lista.append(1)
+lista.append(1)
+print(len(lista))

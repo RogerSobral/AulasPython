@@ -58,6 +58,9 @@ print(usuarios)
 
 usuarios=list()
 print("Seja Bem vindo!")
+
+
+
 while True:
 
     print("#"*20,"Menu", "#"*20)

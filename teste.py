@@ -1,5 +1,6 @@
+from scipy import interpolate
 
-nome="Menu  nu"
 
-print(nome.center(20,"#"))
-print(nome.find("nu"))
+
+for valur in dir():
+    print(valur)

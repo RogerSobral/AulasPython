@@ -51,7 +51,7 @@ print("Cadastro de Pessoa".center(30,"#"))
 
 
 
-
+"""
 x=0
 pessoas=list()
 while True:
@@ -65,19 +65,64 @@ while True:
         break
 
 print(pessoas)
-
+"""
 #Exe2
-# Criar uma função que cadastre uma lista de produtos, onde cada produto vai ter :
-# Tipo
-# Descrição
-# Quantidade
-# Você deve validar o campo quantidade para ser um int
+# Criar uma função que cadastre uma lista de produtos, onde cada produto vai ter:
+# Tipo -> ok
+# Descrição  ->ok
+# Quantidade -ok
+# Você deve validar o campo quantidade para ser um int -> ok
+
+def produto(descricao, tipo,quantidade):
+    descricao=descricao.strip()
+    tipo=tipo.strip()
+    quantidade=quantidade.strip()
+    if quantidade.isdigit():
+        return {"descricao":descricao,"tipo":tipo,"quantidade":int(quantidade)}
+    else:
+        print("O valor da quantidade não é valido")
+
+
+produtos=list()
+
+while True:
+    descricao=input("Digite a descrição do produto: ")
+    tipo = input("Digite o tipo do produto: ")
+    quantidade = input("Digite a quantidade do produto: ")
+    if isinstance(produto(descricao=descricao,tipo=tipo,quantidade=quantidade),dict):
+        produtos.append(produto(descricao=descricao,tipo=tipo,quantidade=quantidade))
+    else:
+        print("Não foi possivel cadastrar")
+
+    resp=input("Deseja sair sim ou não").strip()[0].upper()
+
+    if resp=="S":
+        break
+
+print(produtos)
 
 
 
 
+#exe 3:
+#Criar um sistema que cadastra receitas financeiras
+# descrição
+# valor ( validar o valor)
+# data
+# categoria
+# salvar como um dicionario cada receita
+# salvar dentro de uma lista de receitas
+# mostrar na tela
 
-
+#exe 4:
+#Criar um sistema que para cadastrar livros
+# Titulo
+# autor
+# data
+# Editora
+# salvar como um dicionario cada livro
+# salvar dentro de uma lista de livros
+# mostrar na tela
 
 
 # Função args kargs

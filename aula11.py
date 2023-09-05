@@ -1,5 +1,5 @@
 #Funções 2
-
+#Importação
 import datetime as dt
 
 #def somar(n1:float,n2:float,n3:float):
@@ -107,3 +107,15 @@ print(somatoria2(lista2))
 # Criar uma função que calcule a idade de alguem
 # sabendo que ele vai entrar com o ano em que nasceu como parametro
 # vai ter que importar a biblioteca datetime para pegar o ano atual
+
+print("Exer1".center(30,"#"))
+def idade(ano_nasc):
+    if ano_nasc.isdigit() and len(ano_nasc)==4:
+        return dt.datetime.today().year - int(ano_nasc)
+    else:
+        return -1
+
+
+
+print(idade("1994"))
+

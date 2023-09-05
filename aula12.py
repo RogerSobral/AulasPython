@@ -105,7 +105,7 @@ print(produtos)
 
 
 #exe 3:
-#Criar um sistema que cadastra receitas financeiras
+#Criar um sistema que cadastre as receitas financeiras
 # descrição
 # valor ( validar o valor)
 # data

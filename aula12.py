@@ -1,4 +1,9 @@
 # Funções v.2
+
+from datetime import datetime
+
+
+
 def mensagem(resposta):
     if resposta=="1":
         print("Você pediu para Imprimir")
@@ -106,13 +111,55 @@ print(produtos)
 
 #exe 3:
 #Criar um sistema que cadastre as receitas financeiras
-# descrição
-# valor ( validar o valor)
-# data
-# categoria
-# salvar como um dicionario cada receita
-# salvar dentro de uma lista de receitas
-# mostrar na tela
+# descrição   -> ok
+# valor (validar o valor)  -> ok
+# data   -> ok
+# categoria -> ok
+# salvar como um dicionario cada receita -> ok
+# salvar dentro de uma lista de receitas -> ok
+# mostrar na tela -> ok
+
+def verificarValor(valor):
+    valor=valor.strip()
+    if valor.isdigit() or str.isdigit(valor.replace(".", "")) or str.isdigit(valor.replace(",", "")):
+        valor=valor.replace(",",".")
+        return float(valor)
+
+
+#"234.567
+
+def receita(descricao, valor,data,categoria):
+    descricao=descricao.strip()
+    data=data.strip()
+    categoria=categoria.strip()
+    # eu vou criar uma função para validar meu valor
+    if isinstance( verificarValor(valor), float):
+        return {"descricao":descricao,"data":data,"categoria":categoria,"valor":verificarValor(valor)}
+
+    else:
+        print("Valor digitado errado")
+
+
+receitas=list()
+while True:
+    descricao=input("Digite a descrição da receita: ")
+    valor = input("Digite o valor da receita:  ")
+    data = datetime.today()
+    categoria= input("Digite a categoria da receita:  ")
+    if isinstance(receita(descricao,valor,data,categoria),dict):
+        receitas.append(receita(descricao,valor,data,categoria))
+    else:
+        print("Não foi possivel cadastrar")
+
+    resp=input("Deseja sair sim ou não").strip()[0].upper()
+
+    if resp=="S":
+        break
+
+#vamos imprimir as receitas de modo organizado
+
+print(receitas)
+
 
 #exe 4:
 #Criar um sistema que para cadastrar livros
@@ -125,6 +172,5 @@ print(produtos)
 # mostrar na tela
 
 
-# Função args kargs
 
 

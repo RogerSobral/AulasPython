@@ -162,14 +162,14 @@ print(receitas)
 
 
 #exe 4:
-#Criar um sistema que para cadastrar livros
+#Criar um sistema para cadastrar livros
 # Titulo
 # autor
 # data
 # Editora
 # salvar como um dicionario cada livro
 # salvar dentro de uma lista de livros
-# mostrar na tela
+# Mostrar na tela
 
 
 

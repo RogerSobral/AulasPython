@@ -133,3 +133,10 @@ while True:
             print("Valor digitado não é valido !")
     else:
         break
+
+
+#  Exe.1 = Cadastrar 5 nomes em um arquivo txt
+#  Exe.2 = ler os 5  nomes em um arquivo txt
+#  Exe.3 = salvar esses nomes em uma lista
+
+

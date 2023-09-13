@@ -88,13 +88,13 @@ valor=criarArquivoPessoa()
 
 while True:
     if valor:
-        print("MENU".center(40,"#"))
-        print("""
-        Opção 1 -> Cadastrar
-        Opção 2 -> Listar
-        Opção 3 -> Buscar
-        Opção 4 -> Sair do sistema
-        """)
+      #  print("MENU".center(40,"#"))
+      #  print("""
+      #  Opção 1 -> Cadastrar
+      #  Opção 2 -> Listar
+      #  Opção 3 -> Buscar
+       # Opção 4 -> Sair do sistema
+       # """)
 
         pergunta = input("Qual Opção Deseja: ")
 
@@ -135,8 +135,30 @@ while True:
         break
 
 
-#  Exe.1 = Cadastrar 5 nomes em um arquivo txt
+#  Exe.1 = Cadastrar 5 nomes em um arquivo txt -> ok
 #  Exe.2 = ler os 5  nomes em um arquivo txt
 #  Exe.3 = salvar esses nomes em uma lista
+#  A resolução esta no arquivo exe4.py
+
+try:
+    nomes=open("nomes.txt","+a")
+    nomes.close()
+except Exception as e:
+    print("Não foi possivel criar o arquivo")
+
+
+try:
+    nomes=open("nomes.txt","+a")
+    for i in range(5):
+        if i !=4:
+            nomes.write(f'{input("digite um nome")},')
+        else:
+            nomes.write(f'{input("digite um nome")}')
+
+except Exception as e:
+    print("Não foi possivel criar o arquivo")
+
+finally:
+    nomes.close()
 
 

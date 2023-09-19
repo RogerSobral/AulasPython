@@ -56,8 +56,6 @@ p2= Pessoa("pEDRO","30/10/2013","1234345","11 33332323")
 
 class Animal:
 
-    def __int__(self):
-        super().__init__(self)
 
     def __init__(self, tipo,status, classe, porte):
         self.tipo=tipo
@@ -98,7 +96,6 @@ class Usuario:
 
 
 
-
 user1=Usuario("Pedro","2010","23.233.45-5")
 
 
@@ -108,3 +105,4 @@ user1.correr()
 print(f" o vigor é {user1.vigor}")
 
 print(user1.idade())
+

@@ -1,5 +1,18 @@
 #-*- coding: utf-8 -*-
 import PySimpleGUI as sg
+"""
+#Pegar nomes de fontes
+from tkinter import Tk, font
+root = Tk()
+
+font_tuple = font.families()
+#Creates a Empty list to hold font names
+FontList=[]
+for font in font_tuple:
+    FontList.append(font)
+
+print(FontList)
+"""
 
 #Padroes
 fonteTitulo=("Helvetica ",17,"bold")
@@ -72,7 +85,99 @@ def janelaCadastrarFuncionario():
     return sg.Window("Cadastro",layout,resizable=True,background_color="#2F6073")
 
 
+def janelaContato():
+    layout=[
+        [sg.Image("img/logoAPP.png", background_color="#2F6073"), sg.Push(background_color="#2F6073"),
+         sg.Text("Contato", background_color="#2F6073", font=fonteTitulo),
+         sg.Push(background_color="#2F6073")],
+
+        [sg.HSep()],
+
+        [sg.Text("Email", background_color="#2F6073", font=fontTexto, size=10),
+         sg.Input(size=(45, 50), background_color="#FFFFFF", font=fontTexto),
+         sg.Text("Telefone", background_color="#2F6073", font=fontTexto,size=10),
+         sg.Input(size=20, background_color="#FFFFFF", font=fontTexto)],
+
+        [sg.HSep()],
+
+#Rua | Numero | CEP
+        [sg.Text("Rua", background_color="#2F6073", font=fontTexto, size=10),
+         sg.Input(size=(45, 50), background_color="#FFFFFF", font=fontTexto),
+         sg.Text("Numero", background_color="#2F6073", font=fontTexto,size=10),
+         sg.Input(size=10, background_color="#FFFFFF", font=fontTexto),
+         sg.Text("CEP", background_color="#2F6073", font=fontTexto,size=5),
+         sg.Input(size=16, background_color="#FFFFFF", font=fontTexto),
+         sg.Button("Buscar",font=fontTexto)
+         ],
+
+# Bairro | Cidade | SP
+        [sg.Text("Bairro", background_color="#2F6073", font=fontTexto, size=10),
+         sg.Input(size=(45, 50), background_color="#FFFFFF", font=fontTexto),
+         sg.Text("Cidade", background_color="#2F6073", font=fontTexto, size=10),
+         sg.Input(size=25, background_color="#FFFFFF", font=fontTexto),
+         sg.Text("Estado", background_color="#2F6073", font=fontTexto, size=10),
+         sg.Input(size=10, background_color="#FFFFFF", font=fontTexto)
+         ],
+
+    #Button Cadastrar e o Buscar
+        [sg.Push(background_color=cor_fundo),sg.Button("Voltar", font=fontTexto, size=18),sg.Button("Cadastrar", font=fontTexto, size=18), sg.Push(background_color=cor_fundo)]
+
+    ]
+
+    return sg.Window("Contato",layout,background_color="#2F6073")
 
 
 
-janelaCadastrarFuncionario().read()
+def janelaListarFuncionario():
+
+    lista=["Gerente", "Supervisor", "Suporte", "Segurança"]
+
+    top_tabela=["Nome", "Nascimento","CPF","Cargo","Telefone","Nivel"]
+    valores=[[]]
+
+    layout = [
+        [sg.Image("img/logoAPP.png",background_color="#2F6073"),sg.Push(background_color="#2F6073"),
+         sg.Text("LISTAR FUNCIONARIO",background_color="#2F6073",font=fonteTitulo),
+         sg.Push(background_color="#2F6073")],
+
+        [sg.HSep()],
+
+        [sg.Text("Nome",background_color="#2F6073",font=fontTexto,size=10),
+         sg.Input(size=(70,50),background_color="#FFFFFF", font=fontTexto),
+         sg.Text("Nascimento",background_color="#2F6073",font=fontTexto),
+         sg.Input(size=20,background_color="#FFFFFF",font=fontTexto),
+         sg.Image("img/calendar.png",background_color="#2F6073")],
+
+        [sg.Text("CPF",background_color="#2F6073",font=fontTexto,size=10),
+         sg.Input(size=20,background_color="#FFFFFF",font=fontTexto),
+         sg.Text("Cargo",background_color=cor_fundo,font=fontTexto,size=10),
+         sg.Combo(lista,size=30, default_value="Escolha o Cargos",font=fontTexto,button_arrow_color="#FFFFFF",button_background_color="#2F6073"),
+         sg.Text("Cadastrar Contato",size=15, font=fontTexto,background_color=cor_fundo),sg.Image("img/contato.png",background_color="#2F6073")],
+
+        [sg.HSep()],
+
+        [sg.Text("Senha",size=10,background_color=cor_fundo, font=fontTexto),
+         sg.Input(font=fontTexto, size=15,password_char='*'),
+         sg.Text("Nivel", font=fontTexto,background_color=cor_fundo),
+         sg.Radio("ADM","radio1", font=fontTexto,  background_color=cor_fundo),
+         sg.Radio("COMUM","radio1",default=True, font=fontTexto, background_color=cor_fundo), sg.Push(background_color=cor_fundo),sg.Button("Cadastrar",font=fontTexto, size=20), sg.Push(background_color=cor_fundo)],
+
+        [sg.HSep()],
+
+       #Vai entrar uma tabela mostrando os usuarioas
+
+        [sg.Table(headings=top_tabela, values=valores)],
+
+        [sg.HSep()],
+        [sg.Push(background_color=cor_fundo), sg.Text("By: Rogério Sobral Ribeiro",background_color=cor_fundo),sg.Push(background_color=cor_fundo)]
+
+    ]
+
+    return sg.Window("Listar",layout,resizable=True,background_color="#2F6073")
+
+
+
+janelaListarFuncionario().read()
+
+# destruido o arquivo tk usado para pegar as fontes
+#root.destroy()

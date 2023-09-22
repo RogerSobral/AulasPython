@@ -58,16 +58,20 @@ def janelaCadastrarFuncionario():
          sg.Radio("COMUM","radio1",default=True, font=fontTexto, background_color=cor_fundo), sg.Push(background_color=cor_fundo),sg.Button("Cadastrar",font=fontTexto, size=20), sg.Push(background_color=cor_fundo)],
 
         [sg.HSep()],
-        [sg.Push(background_color=cor_fundo),sg.Image("img/fundoCadastro.png",background_color=cor_fundo),sg.Push(background_color=cor_fundo)],
+
+        [
+            [sg.Text("Observações de uso: \nCadastrar o nascimento use o calendario :\nA senha deve ter 6 caracteres:\nPara cadastrar o contato clique no icone:",
+            font=fontTexto,background_color=cor_fundo)]
+        ,sg.Push(background_color=cor_fundo),sg.Image("img/fundoCadastro.png",background_color=cor_fundo),sg.Push(background_color=cor_fundo)],
 
         [sg.HSep()],
         [sg.Push(background_color=cor_fundo), sg.Text("By: Rogério Sobral Ribeiro",background_color=cor_fundo),sg.Push(background_color=cor_fundo)]
 
-
-
     ]
 
     return sg.Window("Cadastro",layout,resizable=True,background_color="#2F6073")
+
+
 
 
 

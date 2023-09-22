@@ -1,4 +1,4 @@
-#-*- coding: latin-1 -*-
+#-*- coding: utf-8 -*-
 import PySimpleGUI as sg
 
 def janelaLogin():
@@ -26,10 +26,12 @@ def janelaCadastrarFuncionario():
 
 
     layout = [
-        [sg.Image("img/logoAPP.png",background_color="#2F6073"),sg.Text("Cadastrar Funcionario",background_color="#2F6073"),sg.Push(background_color="#2F6073")],
-        [sg.Text("Nome",background_color="#2F6073",font="arial 15"),
-         sg.Input(size=20,background_color="#FFFFFF"),sg.Text("Nascimento",background_color="#2F6073",font="arial 15"),sg.Input(size=20,background_color="#FFFFFF"),sg.Image("img/calendar.png",background_color="#2F6073")]
+        [sg.Image("img/logoAPP.png",background_color="#2F6073"),sg.Push(background_color="#2F6073"),sg.Text("CADASTRAR FUNCIONARIO",background_color="#2F6073",font=("Helvetica ",17,"bold")),sg.Push(background_color="#2F6073")],
+        [sg.HSep()],
 
+        [sg.Text("Nome",background_color="#2F6073",font="arial 15"),
+         sg.Input(size=20,background_color="#FFFFFF"),sg.Text("Nascimento",background_color="#2F6073",font="Helvetica 15"),
+         sg.Input(size=20,background_color="#FFFFFF"),sg.Image("img/calendar.png",background_color="#2F6073")]
     ]
 
     return sg.Window("Cadastro",layout,resizable=True,background_color="#2F6073")

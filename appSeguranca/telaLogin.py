@@ -68,7 +68,7 @@ def janelaCadastrarFuncionario():
          sg.Input(font=fontTexto, size=15,password_char='*'),
          sg.Text("Nivel", font=fontTexto,background_color=cor_fundo),
          sg.Radio("ADM","radio1", font=fontTexto,  background_color=cor_fundo),
-         sg.Radio("COMUM","radio1",default=True, font=fontTexto, background_color=cor_fundo), sg.Push(background_color=cor_fundo),sg.Button("Cadastrar",font=fontTexto, size=20), sg.Push(background_color=cor_fundo)],
+         sg.Radio("COMUM","radio1",default=True, font=fontTexto, background_color=cor_fundo), sg.Push(background_color=cor_fundo),sg.Button("Cadastrar",font=fontTexto, size=20), sg.Push(background_color=cor_fundo), sg.FileBrowse("ADD Foto",initial_folder="img")],
 
         [sg.HSep()],
 

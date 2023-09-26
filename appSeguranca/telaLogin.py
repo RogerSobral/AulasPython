@@ -136,7 +136,7 @@ def janelaListarFuncionario():
     valores=[[]]
 
     layout = [
-        [sg.Image("img/logoAPP.png",background_color="#2F6073"),sg.Push(background_color="#2F6073"),
+        [sg.Image("img/volte.png",background_color=cor_fundo,enable_events=True, key="-VOLTAR-"),sg.Image("img/logoAPP.png",background_color="#2F6073"),sg.Push(background_color="#2F6073"),
          sg.Text("LISTAR FUNCIONARIO",background_color="#2F6073",font=fonteTitulo),
          sg.Push(background_color="#2F6073")],
 
@@ -181,7 +181,7 @@ def janelaBaterPonto():
     cabecalho=["Entrada","Saída Alimentação", "Volta Alimentação", "Saída"]
 
     layout=[
-        [sg.Image("img/volte.png",background_color=cor_fundo,enable_events=True), sg.Image("img/logoAPP.png", background_color="#2F6073"), sg.Push(background_color="#2F6073"),
+        [sg.Image("img/volte.png",background_color=cor_fundo,enable_events=True,key="-VOLTAR-"), sg.Image("img/logoAPP.png", background_color="#2F6073"), sg.Push(background_color="#2F6073"),
          sg.Text("BATER PONTO", background_color=cor_fundo, font=fonteTitulo),
          sg.Push(background_color=cor_fundo)],
 
@@ -236,7 +236,8 @@ while True:
        telaMenu.hide()
 
    if window==telaCadastrar and events==sg.WIN_CLOSED:
-       break
+       telaCadastrar.hide()
+       telaMenu.un_hide()
 
    if window == telaCadastrar and events == "-VOLTAR-":
        telaMenu.un_hide()
@@ -250,5 +251,30 @@ while True:
 
    if window == telaContato and events == "-VOLTAR-":
        telaContato.hide()
+
+
+
+   if window==telaMenu and events=="-LISTAR-":
+       telaListarUsuarios=janelaListarFuncionario()
+       telaMenu.hide()
+
+   if window== telaListarUsuarios and events==sg.WIN_CLOSED:
+       telaListarUsuarios.hide()
+       telaMenu.un_hide()
+
+   if window == telaListarUsuarios and events=="-VOLTAR-":
+       telaListarUsuarios.hide()
+       telaMenu.un_hide()
+
+   if window == telaMenu and events =="-BATER_PONTO-":
+       telaPonto=janelaBaterPonto()
+       telaMenu.hide()
+
+   if window==telaPonto and events== sg.WIN_CLOSED:
+       telaPonto.hide()
+       telaMenu.un_hide()
+   if window== telaPonto and events =="-VOLTAR-":
+       telaPonto.hide()
+       telaMenu.un_hide()
 # destruido o arquivo tk usado para pegar as fontes
 #root.destroy()

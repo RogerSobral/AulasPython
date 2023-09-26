@@ -116,6 +116,6 @@ contato=1
 senha="123"
 nivel="ADM"
 
-f1=Funcionario(nome,cpf,data_nasc,cargo,contato,senha,nivel)
+f1=Funcionario(nome,data_nasc,cargo,contato,senha,nivel)
 
 print(f1.idade())

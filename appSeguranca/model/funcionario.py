@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 import datetime as dt
-#Nova Modificação
+
+
 import appSeguranca.util.verificador as verificar
 
 class Funcionario:

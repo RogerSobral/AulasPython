@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 import PySimpleGUI as sg
 from appSeguranca.controller.funcionarioController import FuncionarioController
+from appSeguranca.util.requisicaoEnd import buscarCEP
 """
 #Pegar nomes de fontes
 from tkinter import Tk, font
@@ -55,7 +56,7 @@ def janelaCadastrarFuncionario():
          sg.Input(size=(70,50),background_color="#FFFFFF", font=fontTexto, key="-NOME-"),
          sg.Text("Nascimento",background_color="#2F6073",font=fontTexto),
          sg.Input(size=20,background_color="#FFFFFF",font=fontTexto, key="-NASCIMENTO-"),
-         sg.Image("img/calendar.png",background_color="#2F6073", key="-CALENDAR-")],
+         sg.Image("img/calendar.png",background_color="#2F6073",enable_events=True, key="-CALENDAR-")],
 
         [sg.Text("CPF",background_color="#2F6073",font=fontTexto,size=10),
          sg.Input(size=20,background_color="#FFFFFF",font=fontTexto, key="-CPF-"),
@@ -101,33 +102,33 @@ def janelaContato():
         [sg.HSep()],
 
         [sg.Text("Email", background_color="#2F6073", font=fontTexto, size=10),
-         sg.Input(size=(45, 50), background_color="#FFFFFF", font=fontTexto),
+         sg.Input(size=(45, 50), background_color="#FFFFFF", font=fontTexto, key="-EMAIL-"),
          sg.Text("Telefone", background_color="#2F6073", font=fontTexto,size=10),
-         sg.Input(size=20, background_color="#FFFFFF", font=fontTexto)],
+         sg.Input(size=20, background_color="#FFFFFF", font=fontTexto, key="-TELEFONE-")],
 
         [sg.HSep()],
 
 #Rua | Numero | CEP
         [sg.Text("Rua", background_color="#2F6073", font=fontTexto, size=10),
-         sg.Input(size=(45, 50), background_color="#FFFFFF", font=fontTexto),
+         sg.Input(size=(45, 50), background_color="#FFFFFF", font=fontTexto, key="-RUA-"),
          sg.Text("Numero", background_color="#2F6073", font=fontTexto,size=10),
-         sg.Input(size=10, background_color="#FFFFFF", font=fontTexto),
+         sg.Input(size=10, background_color="#FFFFFF", font=fontTexto,key="-NUMERO-"),
          sg.Text("CEP", background_color="#2F6073", font=fontTexto,size=5),
-         sg.Input(size=16, background_color="#FFFFFF", font=fontTexto),
-         sg.Button("Buscar",font=fontTexto)
+         sg.Input(size=16, background_color="#FFFFFF", font=fontTexto, key="-CEP-"),
+         sg.Button("Buscar",font=fontTexto, key="-BUSCAR-")
          ],
 
 # Bairro | Cidade | SP
         [sg.Text("Bairro", background_color="#2F6073", font=fontTexto, size=10),
-         sg.Input(size=(45, 50), background_color="#FFFFFF", font=fontTexto),
+         sg.Input(size=(45, 50), background_color="#FFFFFF", font=fontTexto, key="-BAIRRO-"),
          sg.Text("Cidade", background_color="#2F6073", font=fontTexto, size=10),
-         sg.Input(size=25, background_color="#FFFFFF", font=fontTexto),
+         sg.Input(size=25, background_color="#FFFFFF", font=fontTexto,key="-CIDADE-"),
          sg.Text("Estado", background_color="#2F6073", font=fontTexto, size=10),
-         sg.Input(size=10, background_color="#FFFFFF", font=fontTexto)
+         sg.Input(size=10, background_color="#FFFFFF", font=fontTexto,key="-ESTADO-")
          ],
 
     #Button Cadastrar e o Buscar
-        [sg.Push(background_color=cor_fundo),sg.Button("Voltar", font=fontTexto, size=18),sg.Button("Cadastrar", font=fontTexto, size=18),sg.Push(background_color=cor_fundo)]
+        [sg.Push(background_color=cor_fundo),sg.Button("Voltar", font=fontTexto, size=18, key="-VOLTAR_BTN-"),sg.Button("Cadastrar", font=fontTexto, size=18, key="-CADASTRAR-"),sg.Push(background_color=cor_fundo)]
 
     ]
 
@@ -252,6 +253,53 @@ while True:
        telaMenu.un_hide()
        telaCadastrar.hide()
 
+   if window == telaCadastrar and events == "-CONTATO-":
+        telaContato=janelaContato()
+
+   if window == telaContato and (events == sg.WIN_CLOSED or events=="-VOLTAR-" or events=="-VOLTAR_BTN-"):
+       email=values["-EMAIL-"]
+       telefone=values["-TELEFONE-"]
+       rua= values["-RUA-"]
+       numero=values["-NUMERO-"]
+       cep= values["-CEP-"]
+       bairro= values["-BAIRRO-"]
+       cidade= values["-CIDADE-"]
+       estado= values["-ESTADO-"]
+       telaContato["-EMAIL-"].update(value="")
+       telaContato["-TELEFONE-"].update(value="")
+       telaContato["-RUA-"].update(value="")
+       telaContato["-CEP-"].update(value="")
+       telaContato["-BAIRRO-"].update(value="")
+       telaContato["-CIDADE-"].update(value="")
+       telaContato["-ESTADO-"].update(value="")
+
+
+       telaContato.hide()
+
+
+   if  window == telaContato and events =="-BUSCAR-":
+       cep=values["-CEP-"]
+       if len(cep)==8 or len(cep)==9:
+           uf, cidade, rua, bairro, ibge, comp=buscarCEP(cep)
+           telaContato["-RUA-"].update(value=rua)
+           telaContato["-CEP-"].update(value=cep)
+           telaContato["-BAIRRO-"].update(value=bairro)
+           telaContato["-CIDADE-"].update(value=cidade)
+           telaContato["-ESTADO-"].update(value=uf)
+       else:
+           sg.Popup("Digite um CEP valido")
+
+
+
+   if window == telaCadastrar and events =="-CALENDAR-":
+       meses=['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro',
+                         'Outubro', 'Novembro', 'Dezembro']
+       dias=['Dom', ' Seg', 'Ter', 'Quar', 'Quin', 'Sex', 'Sáb']
+
+       mes, dia , ano=sg.popup_get_date(month_names=meses,begin_at_sunday_plus=1, day_abbreviations=dias, close_when_chosen=True)
+
+       telaCadastrar["-NASCIMENTO-"].update(value=f"{dia}/{mes}/{ano}")
+
    if window == telaCadastrar and events =="-CADASTRAR-":
        # Antes de salvar no txt vamos verificar as coisas
 
@@ -263,35 +311,10 @@ while True:
        senha=values["-SENHA-"]
        nivel= "Comum" if values["-COMUM-"] == True else "Adm"
 
-
-
-       FuncionarioController(nome,cpf,data_nascimento,cargo,id,senha,nivel)
-
-
-
-       print(" Valores")
-       print(f"nome{nome}")
-       print(f"CPF{cpf}")
-       print(f"NAS{data_nascimento}")
-       print(f"CARGO{cargo}")
-       print(f"ID{id}")
-       print(f"SENHA{senha}")
-       print(f"NIVEL{nivel}")
-
-
-
-
-
-
-   if window == telaCadastrar and events == "-CONTATO-":
-       telaContato=janelaContato()
-
-   if window == telaContato and events==sg.WIN_CLOSED:
-       telaContato.hide()
-
-   if window == telaContato and events == "-VOLTAR-":
-       telaContato.hide()
-
+       if len(nome)==0 or len(cpf)==0 or len(data_nascimento)==0:
+           sg.Popup("Você precisa cadastrar os valores")
+       else:
+           FuncionarioController(nome,cpf,data_nascimento,cargo,id,senha,nivel)
 
 
    if window==telaMenu and events=="-LISTAR-":
@@ -317,6 +340,6 @@ while True:
        telaPonto.hide()
        telaMenu.un_hide()
 
-   print("Valores: ", values)
+
 # destruido o arquivo tk usado para pegar as fontes
 #root.destroy()

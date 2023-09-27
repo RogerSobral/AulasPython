@@ -1,5 +1,6 @@
 #-*- coding: utf-8 -*-
 import PySimpleGUI as sg
+from appSeguranca.controller.funcionarioController import FuncionarioController
 """
 #Pegar nomes de fontes
 from tkinter import Tk, font
@@ -51,31 +52,37 @@ def janelaCadastrarFuncionario():
         [sg.HSep()],
 
         [sg.Text("Nome",background_color="#2F6073",font=fontTexto,size=10),
-         sg.Input(size=(70,50),background_color="#FFFFFF", font=fontTexto),
+         sg.Input(size=(70,50),background_color="#FFFFFF", font=fontTexto, key="-NOME-"),
          sg.Text("Nascimento",background_color="#2F6073",font=fontTexto),
-         sg.Input(size=20,background_color="#FFFFFF",font=fontTexto),
-         sg.Image("img/calendar.png",background_color="#2F6073")],
+         sg.Input(size=20,background_color="#FFFFFF",font=fontTexto, key="-NASCIMENTO-"),
+         sg.Image("img/calendar.png",background_color="#2F6073", key="-CALENDAR-")],
 
         [sg.Text("CPF",background_color="#2F6073",font=fontTexto,size=10),
-         sg.Input(size=20,background_color="#FFFFFF",font=fontTexto),
+         sg.Input(size=20,background_color="#FFFFFF",font=fontTexto, key="-CPF-"),
          sg.Text("Cargo",background_color=cor_fundo,font=fontTexto,size=10),
-         sg.Combo(lista,size=30, default_value="Escolha o Cargos",font=fontTexto,button_arrow_color="#FFFFFF",button_background_color="#2F6073"),
-         sg.Text("Cadastrar Contato",size=15, font=fontTexto,background_color=cor_fundo),sg.Image("img/contato.png",background_color="#2F6073",enable_events=True,key="-CONTATO-")],
+         sg.Combo(lista,size=30, default_value="Escolha o Cargos",font=fontTexto,button_arrow_color="#FFFFFF",button_background_color="#2F6073",key="-CARGOS-"),
+         sg.Text("Cadastrar Contato",size=15, font=fontTexto,background_color=cor_fundo),
+         sg.Image("img/contato.png",background_color="#2F6073",enable_events=True,key="-CONTATO-"),
+         sg.Text("ID",size=3, font=fontTexto,background_color=cor_fundo),
+         sg.Input(key="-ID_CONTATO-",size=7,background_color="#FFFFFF",font=fontTexto)],
 
         [sg.HSep()],
 
         [sg.Text("Senha",size=10,background_color=cor_fundo, font=fontTexto),
-         sg.Input(font=fontTexto, size=15,password_char='*'),
+         sg.Input(font=fontTexto, size=15,password_char='*', key="-SENHA-"),
          sg.Text("Nivel", font=fontTexto,background_color=cor_fundo),
-         sg.Radio("ADM","radio1", font=fontTexto,  background_color=cor_fundo),
-         sg.Radio("COMUM","radio1",default=True, font=fontTexto, background_color=cor_fundo), sg.Push(background_color=cor_fundo),sg.Button("Cadastrar",font=fontTexto, size=20), sg.Push(background_color=cor_fundo), sg.FileBrowse("ADD Foto",initial_folder="img")],
+         sg.Radio("ADM","radio1", font=fontTexto,  background_color=cor_fundo,key="-ADM-"),
+         sg.Radio("COMUM","radio1",default=True, font=fontTexto, background_color=cor_fundo,key="-COMUM-"),
+         sg.Button("Cadastrar",font=fontTexto, size=20, key="-CADASTRAR-"),
+         sg.Input(key="-PATH_PHOTO-"),
+         sg.FileBrowse("ADD FOTO",initial_folder="img",target="-PATH_PHOTO-"),
+         sg.Button("Carregar", key="-CARREGAR-")],
 
         [sg.HSep()],
 
-        [
-            [sg.Text("Observações de uso: \nCadastrar o nascimento use o calendario :\nA senha deve ter 6 caracteres:\nPara cadastrar o contato clique no icone:",
-            font=fontTexto,background_color=cor_fundo)]
-        ,sg.Push(background_color=cor_fundo),sg.Image("img/fundoCadastro.png",background_color=cor_fundo),sg.Push(background_color=cor_fundo)],
+        [sg.Push(background_color=cor_fundo),
+         sg.Image("img/fundoCadastro.png",background_color=cor_fundo),
+         sg.Push(background_color=cor_fundo), sg.Image(key="-FOTO-")],
 
         [sg.HSep()],
         [sg.Push(background_color=cor_fundo), sg.Text("By: Rogério Sobral Ribeiro",background_color=cor_fundo),sg.Push(background_color=cor_fundo)]
@@ -216,6 +223,7 @@ while True:
 
    window,events, values = sg.read_all_windows()
 
+
    if window==telaLogin and events==sg.WIN_CLOSED:
        break
 
@@ -223,6 +231,7 @@ while True:
        nome = values["-LOGIN-"]
        senha= values["-SENHA-"]
 
+#vou varrer um TXT
        if nome in ["carlos", "maria","pedro"] and senha == "123":
            sg.Popup("Seja bem vindo! ",nome)
            telaMenu=janelaMenu()
@@ -242,6 +251,37 @@ while True:
    if window == telaCadastrar and events == "-VOLTAR-":
        telaMenu.un_hide()
        telaCadastrar.hide()
+
+   if window == telaCadastrar and events =="-CADASTRAR-":
+       # Antes de salvar no txt vamos verificar as coisas
+
+       nome=values["-NOME-"]
+       cpf=values["-CPF-"]
+       data_nascimento=values["-NASCIMENTO-"]
+       cargo=values["-CARGOS-"]
+       id=values["-ID_CONTATO-"]
+       senha=values["-SENHA-"]
+       nivel= "Comum" if values["-COMUM-"] == True else "Adm"
+
+
+
+       FuncionarioController(nome,cpf,data_nascimento,cargo,id,senha,nivel)
+
+
+
+       print(" Valores")
+       print(f"nome{nome}")
+       print(f"CPF{cpf}")
+       print(f"NAS{data_nascimento}")
+       print(f"CARGO{cargo}")
+       print(f"ID{id}")
+       print(f"SENHA{senha}")
+       print(f"NIVEL{nivel}")
+
+
+
+
+
 
    if window == telaCadastrar and events == "-CONTATO-":
        telaContato=janelaContato()
@@ -276,5 +316,7 @@ while True:
    if window== telaPonto and events =="-VOLTAR-":
        telaPonto.hide()
        telaMenu.un_hide()
+
+   print("Valores: ", values)
 # destruido o arquivo tk usado para pegar as fontes
 #root.destroy()

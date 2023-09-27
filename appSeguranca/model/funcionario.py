@@ -109,14 +109,3 @@ class Funcionario:
 
 
 
-nome="Carlos"
-cpf="12344"
-data_nasc="29/07/1983"
-cargo="Segurança"
-contato=1
-senha="123"
-nivel="ADM"
-
-f1=Funcionario(nome,data_nasc,cargo,contato,senha,nivel)
-
-print(f1.idade())

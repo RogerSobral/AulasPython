@@ -2,6 +2,11 @@
 import PySimpleGUI as sg
 from appSeguranca.controller.funcionarioController import FuncionarioController
 from appSeguranca.util.requisicaoEnd import buscarCEP
+
+import os
+
+#from PIL import Image
+
 """
 #Pegar nomes de fontes
 from tkinter import Tk, font
@@ -44,11 +49,15 @@ def janelaRecuperarSenha():
 def janelaCadastrarFuncionario():
 
     lista=["Gerente", "Supervisor", "Suporte", "Segurança"]
+    file_type=[
+        ("PNG (*.png)","*.png"),
+        ("All files (*.*)","*.*")]
+
 
     layout = [
         [sg.Image("img/volte.png",background_color=cor_fundo,enable_events=True, key="-VOLTAR-"),sg.Image("img/logoAPP.png",background_color="#2F6073"),sg.Push(background_color="#2F6073"),
          sg.Text("CADASTRAR FUNCIONARIO",background_color="#2F6073",font=fonteTitulo),
-         sg.Push(background_color="#2F6073")],
+         sg.Push(background_color="#2F6073"),sg.Image(key="-FOTO-", source="fotos/default.png",size=(80,80))],
 
         [sg.HSep()],
 
@@ -76,14 +85,14 @@ def janelaCadastrarFuncionario():
          sg.Radio("COMUM","radio1",default=True, font=fontTexto, background_color=cor_fundo,key="-COMUM-"),
          sg.Button("Cadastrar",font=fontTexto, size=20, key="-CADASTRAR-"),
          sg.Input(key="-PATH_PHOTO-"),
-         sg.FileBrowse("ADD FOTO",initial_folder="img",target="-PATH_PHOTO-"),
-         sg.Button("Carregar", key="-CARREGAR-")],
+         sg.FileBrowse("ADD FOTO",initial_folder="fotos",target="-PATH_PHOTO-", file_types=file_type),
+         sg.Button("Carregar", key="-CARREGAR_IMG-")],
 
         [sg.HSep()],
 
         [sg.Push(background_color=cor_fundo),
          sg.Image("img/fundoCadastro.png",background_color=cor_fundo),
-         sg.Push(background_color=cor_fundo), sg.Image(key="-FOTO-")],
+         sg.Push(background_color=cor_fundo)],
 
         [sg.HSep()],
         [sg.Push(background_color=cor_fundo), sg.Text("By: Rogério Sobral Ribeiro",background_color=cor_fundo),sg.Push(background_color=cor_fundo)]
@@ -315,6 +324,20 @@ while True:
            sg.Popup("Você precisa cadastrar os valores")
        else:
            FuncionarioController(nome,cpf,data_nascimento,cargo,id,senha,nivel)
+
+
+
+
+#Carregando Foto
+   if window == telaCadastrar and events == "-CARREGAR_IMG-":
+       filename=values["-PATH_PHOTO-"]
+       if os.path.exists(filename): # Se existir um caminho carregado
+         #  image=Image.open(values["-PATH_PHOTO-"])
+         #  image.thumbnail((100,100))
+        #   bio= io.BytesIO()
+        #   image.save(bio, format="PNG")
+           telaCadastrar["-FOTO-"].update(source=filename,size=(80,80))
+
 
 
    if window==telaMenu and events=="-LISTAR-":

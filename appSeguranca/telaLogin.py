@@ -2,6 +2,7 @@
 import PySimpleGUI as sg
 from appSeguranca.controller.funcionarioController import FuncionarioController
 from appSeguranca.util.requisicaoEnd import buscarCEP
+from appSeguranca.controller.contatoController import ControllerContato
 
 import os
 
@@ -299,7 +300,17 @@ while True:
            sg.Popup("Digite um CEP valido")
 
 
-
+   if window == telaContato and events == "-CADASTRAR-":
+       email=values["-EMAIL-"]
+       telefone=values["-TELEFONE-"]
+       rua= values["-RUA-"]
+       numero=values["-NUMERO-"]
+       cep= values["-CEP-"]
+       bairro= values["-BAIRRO-"]
+       cidade= values["-CIDADE-"]
+       estado= values["-ESTADO-"]
+       contato=ControllerContato(email, telefone, rua, numero, bairro, cep, cidade, estado)
+       telaCadastrar["-ID_CONTATO-"].update(value=contato.id())
    if window == telaCadastrar and events =="-CALENDAR-":
        meses=['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro',
                          'Outubro', 'Novembro', 'Dezembro']

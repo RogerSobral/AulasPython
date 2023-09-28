@@ -3,6 +3,7 @@ import appSeguranca.util.verificador as verificar
 
 class Contato:
 
+    id_da_classe=0
     def __init__(self, email, telefone, rua, numero, bairro, cep, cidade, estado):
         self.__email=email
         self.__telefone=telefone
@@ -12,6 +13,7 @@ class Contato:
         self.__cep=cep
         self.__cidade=cidade
         self.__estado=estado
+        self.__id=Contato.addID()
 
 
     @property
@@ -32,6 +34,7 @@ class Contato:
             self.__telefone = verificar.validarTelefone(telefone)
         else:
             print("Telefone Invalido")
+
 
     @property
     def rua(self):
@@ -82,7 +85,19 @@ class Contato:
     def estado(self, estado):
         self.__estado = estado
 
+
     def __str__(self) -> str:
-        return f"{self.email} {self.telefone} {self.rua} {self.numero} {self.bairro}  {self.cidade} {self.cep} {self.estado}"
+        return f"{self.id} {self.email} {self.telefone} {self.rua} {self.numero} {self.bairro} {self.cidade} {self.cep} {self.estado}"
+
+
+    @property
+    def id(self):
+        return self.__id
+    @classmethod
+    def addID(csl):
+        csl.id_da_classe += 1
+        return  csl.id_da_classe
+
+
 
 

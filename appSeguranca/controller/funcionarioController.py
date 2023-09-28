@@ -16,9 +16,9 @@ class FuncionarioController:
         self.criarTxtFuncioario(self.funcionario)
 
     def criarTxtFuncioario(self, funcionario):
-        with open("tabelas/funcinario.txt","a") as file:
+        with open("tabelas/funcinario.txt","a+") as file:
 
-            file.write(funcionario.__str__())
+            file.write(f'{funcionario.__str__()}\n')
             return f"Arquivo Salvo com sucesso ! {file.name}"
 
 

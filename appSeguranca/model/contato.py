@@ -15,6 +15,9 @@ class Contato:
         self.__estado=estado
         self.__id=Contato.addID()
 
+    @classmethod
+    def inicializadorID(csl, id):
+        csl.id_da_classe=id
 
     @property
     def email(self):

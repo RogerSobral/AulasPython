@@ -9,23 +9,11 @@ def lerTxt():
         lista = list()
 
         for linha in file:
+            linha.replace("\n","")
             arquivo = linha.split(" ")
             lista.append(arquivo)
+        return lista
 
-        lista2 = list()
-
-        for linha in lista:
-            pessoa = list()
-            for index, elemento in enumerate(linha):
-
-                if index == 0:
-                    elemento = elemento
-                    pessoa.append(elemento)
-                else:
-                    elemento = elemento.replace("\n", "")
-                    pessoa.append(elemento)
-            lista2.append(pessoa)
-    return lista2
 
 def tela():
     cabecalho=["nome", "idade"]

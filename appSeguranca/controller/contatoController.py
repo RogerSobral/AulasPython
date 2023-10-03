@@ -4,13 +4,14 @@ class ControllerContato:
 
     def __init__(self,email, telefone, rua, numero, bairro, cep, cidade, estado):
         self.contato=Contato(email, telefone, rua, numero, bairro, cep, cidade, estado)
-        self.contato.inicializadorID(self.lerUltimoIdContatosTxt())
+        self.contato.inicializadorID(
+            self.lerUltimoIdContatosTxt())
         self.criarTxtContato(self.contato)
 
 
     def criarTxtContato(self, contato):
-        with open("tabelas/contato.txt", "a") as file:
-            file.write(f'{contato.__str__()}\n')
+        with open(r"C:\Users\rogerio.sribeiro\PycharmProjects\AulasPython\appSeguranca\tabelas\contato.txt", "a") as file:
+            file.writelines(f'\n{contato.__str__()}')
             return f"Arquivo Salvo com sucesso ! {file.name}"
 
     def id(self):
@@ -19,15 +20,19 @@ class ControllerContato:
 
 
     def lerUltimoIdContatosTxt(self):
-        with open("tabelas/contato.txt", "r") as file:
+        with open(r"C:\Users\rogerio.sribeiro\PycharmProjects\AulasPython\appSeguranca\tabelas\contato.txt", "r+") as file:
             lista=list()
-            for linha in file.read():
-                lista.append(linha.split(" "))
-
-
-            return lista[0:-1]
+            separador=file.read().split(" ")
+            print(separador)
 
 
 
 
+            return lista
 
+
+
+
+c=ControllerContato("email", "telefone", "rua", "numero", "bairro", "cep", "cidade", "estado")
+
+#print(c.lerUltimoIdContatosTxt())

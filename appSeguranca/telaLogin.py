@@ -183,7 +183,7 @@ def janelaListarFuncionario():
 
         [sg.HSep()],
 
-       #Vai entrar uma tabela mostrando os usuarioas
+       #Vai entrar uma tabela mostrando os usuarios
 
         [sg.Table(headings=top_tabela, values=valores,auto_size_columns=False, def_col_width=27)],
 

@@ -4,10 +4,18 @@ from abc import ABC, abstractmethod
 class Conta(ABC):
 
     def __init__(self, valor, cliente):
-        self.__saldo=valor
-        self.__cliente=cliente
-        self.__status=True
+        self.__saldo = valor
+        self.__cliente = cliente
+        self.__status = True
+        self.__id=None
 
+    @property
+    def id(self):
+        return self.__id
+
+    @id.setter
+    def id(self, id):
+        self.__id = id
 
     @property
     def status(self):
@@ -78,6 +86,24 @@ class ContaPoupanca(Conta):
                 raise "Você não tem saldo."
         else:
             raise "A conta não esta ativa"
+
+
+class Cliente:
+
+    def __init__(self, nome:str, data_nasc:str ):
+        self.nome=nome
+        self.data_nasc=data_nasc
+        self.__id=None
+
+
+    @property
+    def id(self):
+        return self.__id
+
+    @id.setter
+    def id(self, id):
+        self.__id=id
+
 
 
 

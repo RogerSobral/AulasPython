@@ -24,19 +24,19 @@ def janelaCadastrarCliente():
 
     tipo=["Corrente", "Poupança"]
     layout=[
-        [sg.Push(), sg.Text("Cadastro", font=fonte_titulo),
+        [sg.Push(), sg.Text("Dados Pessoais", font=fonte_titulo),
          sg.Push()],
-
-        [sg.Text("Nome",font=fonte_texto, size=10),sg.Input(key="-NOME-")],
-
-        [sg.Text("Data Nascimento", font=fonte_texto, size=10),
+        [sg.Text("Nome",font=fonte_texto, size=15),sg.Input(key="-NOME-")],
+        [sg.Text("Data Nascimento", font=fonte_texto, size=15),
          sg.Image("img/calendar.gif", enable_events=True, key="-DATA_NASC-"),
          sg.Input(font=fonte_texto, size=10, key="-CALENDAR-")],
+        [sg.HSep(color="white")],
+        [sg.Push(), sg.Text("Dados da Conta", font=fonte_titulo),
+         sg.Push()],
+        [sg.Text("Tipo de conta",font=fonte_texto, size=15), sg.Combo(values=tipo,default_value="Conta", key="-TIPOS-",font=fonte_texto)],
+        [sg.Text("Valor R$",font=fonte_texto, size=15), sg.Input(key="-VALOR-", size=10)],
 
-        [sg.Text("Tipo de conta"), sg.Combo(values=tipo, key="-TIPOS-")],
-        [sg.Text("Valor R$",font=fonte_texto), sg.Input(key="-VALOR-")],
-
-        [sg.Button(key="-CADASTRAR-",button_text="Cadastrar",font=fonte_titulo)]
+        [sg.Button(key="-CADASTRAR-",button_text="Cadastrar",font=fonte_titulo,expand_x=True)]
     ]
 
     return sg.Window(title="Cadastro",layout=layout,finalize=True)
@@ -58,13 +58,9 @@ def janelaFluxoCaixa():
         [sg.Text("Sacar", background_color="white", font=fonte_titulo),
          sg.Input(key="-SACAR-"), sg.Button("Sacar", key="-BTN_SACAR-")],
          #separador
-        [sg.HSeparator()],
+        [sg.HSep(color="black")],
         [sg.Text("Saldo", background_color="white", font=fonte_titulo),
          sg.Input(key="-SALDO-",readonly=True)]
-
-
-
-
     ]
 
 

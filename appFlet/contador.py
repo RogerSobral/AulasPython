@@ -7,8 +7,9 @@ def main(page: ft.Page):
     page.vertical_alignment= ft.MainAxisAlignment.CENTER
     page.window_min_width=600
     page.window_min_height=400
-    page.window_max_width=650
+    page.window_max_width=600
     page.window_max_height=600
+    page.update()
 
 
 

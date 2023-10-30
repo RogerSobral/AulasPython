@@ -15,6 +15,7 @@ pprint.pprint(dict(os.environ))
 
 def main(page:ft.Page):
     page.title="Criando Grids"
+    page.window_min_width=200
     #wrap quebra de linha
     #expand permite expandir e ver mais
     #scroll cria uma barra de rolagem
@@ -42,4 +43,4 @@ def main(page:ft.Page):
     page.update()
 
 
-ft.app(target=main,view= ft.WEB_BROWSER)
+ft.app(target=main)

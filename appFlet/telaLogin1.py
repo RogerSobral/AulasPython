@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import flet as ft
-
+import sys
 def main(page: ft.Page):
     page.title="Login"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
@@ -12,7 +12,7 @@ def main(page: ft.Page):
 
 
     titulo=ft.Text("Login")
-    nome_icon=ft.Icon(ft.icons.BOY)
+    nome_icon=ft.Icon(ft.icons.ACCESS_TIME)
     senha_icon=ft.Icon(ft.icons.PASSWORD)
     nome_input=ft.TextField(hint_text="Digite o seu nome",label="nome")
     passWord_input=ft.TextField(hint_text=" Digite sua senha", label="Senha")
@@ -28,4 +28,4 @@ def main(page: ft.Page):
     page.update()
 
 
-ft.app(target=main)
+ft.app(target=main, view=ft.AppView.WEB_BROWSER)
